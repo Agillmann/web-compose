@@ -1,0 +1,32 @@
+nginx:
+    build: ./dockerfile-nginx
+    ports:
+    - "80:80"
+    volumes:
+    - ./www:/var/www/html
+    - ./conf/site.conf/:/etc/nginx/conf.d/site.conf
+    links:
+    - php
+php:
+    build: ./dockerfile-php
+    volumes:
+    - ./www:/var/www/html
+    - ./conf/php.ini:/usr/local/etc/php/conf.d/php.ini
+    links:
+    - db
+
+db:
+   image: mariadb
+   environment:
+   - MYSQL_ROOT_PASSWORD=password
+
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+     - PMA_ARBITRARY=1
+    restart: always
+    ports:
+    - "8088:80"
+    links:
+    - db
