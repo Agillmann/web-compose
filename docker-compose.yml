@@ -27,6 +27,6 @@ phpmyadmin:
      - PMA_ARBITRARY=1
     restart: always
     ports:
-    - "8088:80"
+    - "8888:80"
     links:
     - db
