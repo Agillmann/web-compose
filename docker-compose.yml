@@ -17,6 +17,8 @@ php:
 
 db:
    image: mariadb
+   volumes:
+     - ./mysql-data:/var/lib/mysql
    environment:
    - MYSQL_ROOT_PASSWORD=password
 
