@@ -20,7 +20,7 @@ db:
    volumes:
      - ./mysql-data:/var/lib/mysql
    environment:
-   - MYSQL_ROOT_PASSWORD=password
+   - MYSQL_ROOT_PASSWORD=root
 
 phpmyadmin:
     image: phpmyadmin/phpmyadmin
